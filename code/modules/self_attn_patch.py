@@ -4,6 +4,7 @@ from .pos_emb import ContinuousSincosEmbed
 from .patchify import Patchify, UnPatchify
 from kappamodules.layers import LinearProjection
 from kappamodules.transformer import PerceiverBlock
+from functools import partial
 
 
 class PatchifiedSelfAttentionBlocks(nn.Module):
@@ -22,14 +23,15 @@ class PatchifiedSelfAttentionBlocks(nn.Module):
         self.num_heads = num_heads
         self.enc_depth = enc_depth
         self.init_weights = init_weights
-        self.block = PerceiverBlock(
-                dim=dim*(P**2), 
-                num_heads=num_heads, 
-                kv_dim=dim*(P**2), 
-                init_weights=init_weights
-                )
+        block_ctor = partial(
+            PerceiverBlock,
+            dim=dim*(P**2),
+            num_heads=num_heads,
+            kv_dim=dim*(P**2),
+            init_weights=init_weights,
+        )
         self.blocks = nn.ModuleList(
-            self.block for _ in range(enc_depth)
+            block_ctor() for _ in range(enc_depth)
         )
         self.patchify = Patchify(P=P, H=H, W=W)
         self.unpatchify = UnPatchify(P=P, H=H, W=W)
