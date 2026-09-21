@@ -1,7 +1,7 @@
 # RENO: Reciprocity-Enforced Neural Operator
 
 ## Introduction
-This repository provides code for the paper [Enforcing Reciprocity in Operator Learning for Seismic Wave Propagation](http://arxiv.org/abs/2602.11631).
+This repository provides code for the paper [Enforcing Reciprocity in Operator Learning for Seismic Wave Propagation](https://doi.org/10.1785/0220260082).
 
 ## File Description
 - **code**: 
@@ -20,14 +20,13 @@ environment.yml
 ## Citation
 We welcome any comments or questions regarding this work. To cite this work:
 ```
-@misc{zou2026enforcingreciprocityoperatorlearning,
+@article{zou2026enforcing,
       title={Enforcing Reciprocity in Operator Learning for Seismic Wave Propagation}, 
       author={Caifeng Zou and Yaozhong Shi and Zachary E. Ross and Robert W. Clayton and Kamyar Azizzadenesheli},
+      journal={Seismological Research Letters},
       year={2026},
-      eprint={2602.11631},
-      archivePrefix={arXiv},
-      primaryClass={physics.geo-ph},
-      url={https://arxiv.org/abs/2602.11631}, 
+      doi={10.1785/0220260082},
+      url={https://doi.org/10.1785/0220260082}, 
 }
 ```
 
